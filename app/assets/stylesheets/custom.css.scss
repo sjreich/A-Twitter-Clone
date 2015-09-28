@@ -1,0 +1,28 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+* {
+  overflow: auto;
+}
+
+header {
+  .navbar {
+    padding: 20px;
+    border: 1px solid black;
+  }
+
+  #logo {
+    float: left;
+    font-size: 1.5em;
+  }
+}
+
+.nav-pills {
+  float: right;
+}
+
+footer {
+  border-top: 1px solid black;
+  padding: 0;
+  margin: 0;
+}
