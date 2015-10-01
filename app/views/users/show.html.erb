@@ -2,3 +2,6 @@
 
 <h1><%= @user.name %></h1>
 <h3><%= @user.email %></h3>
+<p><%= link_to "Edit Profile", edit_user_path %></p>
+<p><%= link_to "Delete", @user, method: :delete, data: 
+                                              {confirm: "Are you sure?"} %></p>
