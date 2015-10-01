@@ -1,2 +1,12 @@
-<% provide(:title, "Users") %>
+<% provide(:title, "User List") %>
 <h1>Users</h1>
+
+<% @users.each do |u| %>
+  <div class="index-box">
+    <h4><%= u.name %></h4>
+    <p><%= u.email %></p>
+    <p><%= link_to "Edit Profile", edit_user_path(u) %> | 
+    <%= link_to "Delete", u, method: :delete, 
+                                        data: {confirm: "Are you sure?"} %></p>
+  </div>
+<% end %>
