@@ -11,6 +11,5 @@ class User < ActiveRecord::Base
                           format: {with: email_regex}
 
   validates :password,    presence: true,
-                          length: {minimum: 6},
-                          allow_nil: true
+                          length: {minimum: 6}
 end
