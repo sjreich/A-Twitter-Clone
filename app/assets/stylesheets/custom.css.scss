@@ -1,8 +1,8 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-* {
-  overflow: auto;
+.nav-pills {
+  float: right;
 }
 
 header {
@@ -17,12 +17,12 @@ header {
   }
 }
 
-.nav-pills {
-  float: right;
+input {
+  margin-bottom: 20px;
 }
 
 footer {
   border-top: 1px solid black;
   padding: 0;
-  margin: 0;
+  margin: 20px 0;
 }
