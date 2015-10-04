@@ -3,9 +3,13 @@
     <small>Joe Reich, 2015</small>
     <ul class="nav nav-pills">
       <li><%= link_to "User List", users_path %></li>
-      <li><%= link_to "Sign up", signup_path %></li>
-      <li><%= link_to "Log in", login_path %></li>
-      <li><%= link_to "Log out", login_path, method: :delete %></li>
+      <li><%= link_to "Message List", messages_path %></li>
+      <% if current_user == nil %>
+        <li><%= link_to "Sign up", signup_path %></li>
+        <li><%= link_to "Log in", login_path %></li>
+      <% else %>
+        <li><%= link_to "Log out", login_path, method: :delete %></li>
+      <% end %>
     </ul>
   </div>
 </footer>

@@ -1,0 +1,14 @@
+<% provide(:title, "Edit Message") %>
+<h1>Edit Message</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@message) do |f|%>
+      <%= f.text_area :content, placeholder: "Content", 
+                                class: "form-control",
+                                style: "height: 8em" %>
+
+      <%= f.submit "Save changes", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

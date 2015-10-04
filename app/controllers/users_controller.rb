@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :admin_user, only: :destroy
+  before_action :correct_user, only: [:edit, :update]
 
   def new
     @user = User.new
@@ -54,7 +55,17 @@ class UsersController < ApplicationController
     end
 
     def admin_user
-      redirect_to(root_url) unless current_user.try(:admin?)
+      if !current_user.try(:admin?)
+        flash[:danger] = "Only admins can delete users"
+        redirect_to root_url unless current_user.try(:admin?)
+      end
+    end
+
+    def correct_user
+      if current_user != User.find(params[:id])
+        flash[:danger] = "You can only edit your own profile"
+        redirect_to current_user
+      end
     end
 
 end

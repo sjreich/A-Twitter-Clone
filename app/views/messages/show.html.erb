@@ -1,0 +1,14 @@
+<% provide(:title, "A message") %>
+<h1>The message is...</h1>
+
+<h2><%= @message.content %></h2>
+<h4><%= link_to "#{@message.user.name}", @message.user %></h4>
+<p><%= @message.updated_at %></p>
+<br>
+<h4>
+  <%= link_to "Edit", edit_message_url %>
+  |
+  <%= link_to "Delete", @message, method: :delete, 
+                                            data: {confirm: "Are you sure?"} %>
+</h4>
+<h4><%= link_to "Post a new message", new_message_path %></h4>
