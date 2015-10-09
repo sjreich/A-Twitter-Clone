@@ -1,0 +1,24 @@
+<% @messages.each do |message| %>
+  <div class="index-box">
+    <p><%= link_to "#{message.content}", message %></p>
+    <small>
+      <%= link_to message.user.name, message.user %> | 
+      <%= message.updated_at %>
+    </small>
+    <br>
+    <p>
+      <%= link_to "Edit", edit_message_path(message) %>
+      |
+      <%= link_to "Delete", message, method: :delete,
+                                          data: {confirm: "Are you sure?"} %>
+    </p>  
+    <p>
+      <% @user = message.user %>
+      <% if current_user.try(:following?(@user)) %>
+        <%= render 'layouts/unfollow' %>
+      <% else %>
+        <%= render 'layouts/follow' %>
+      <% end %>
+    </p>
+  </div>
+<% end %>

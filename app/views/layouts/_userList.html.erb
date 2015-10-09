@@ -1,0 +1,14 @@
+<% @users.each do |u| %>
+  <div class="index-box">
+    <h4><%= link_to "#{u.name}", u %></h4>
+    <p><%= u.email %></p>
+    <p>
+      <%= link_to "Edit Profile", edit_user_path(u) %>
+      <% if current_user.try(:admin?) %>
+        |
+        <%= link_to "Delete", u, method: :delete, 
+                                        data: {confirm: "Are you sure?"} %>
+      <% end %>
+    </p>
+  </div>
+<% end %>

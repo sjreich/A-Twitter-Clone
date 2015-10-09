@@ -1,0 +1,6 @@
+<% provide(:title, "Listeners") %>
+<h1><%= User.find(params[:id]).name %>'s Listeners</h1>
+
+<% x = Relationship.where(loudspeaker_id: params[:id]) %>
+<% @users = x.collect {|r| r.listener } %>
+<%= render 'layouts/userList' %>

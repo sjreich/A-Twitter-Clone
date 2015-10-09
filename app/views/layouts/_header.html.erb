@@ -1,7 +1,12 @@
 <header>
   <div class="navbar navbar-default">
-    <p id="logo">Joe's Twitter Clone</p> 
+    <p id="logo">Joe's Twitter Clone</p>
     <ul class="nav nav-pills">
+      <% if current_user != nil %>
+        <li style="padding: 10px 30px 0 0">
+          Logged in as: <%= current_user.name %>
+        </li>
+      <% end %>
       <li><%= link_to "Home", root_path %></li>
       <li><%= link_to "About", about_path %></li>
       <li><%= link_to "Help", help_path %></li>

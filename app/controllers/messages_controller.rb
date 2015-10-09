@@ -58,7 +58,7 @@ class MessagesController < ApplicationController
       @message = Message.find(params[:id])
       if current_user != @message.user && !current_user.try(:admin?)
         flash[:danger] = "You can only edit/delete your own posts"
-        redirect_to current_user
+        redirect_to root_url
       end
     end
 

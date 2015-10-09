@@ -15,4 +15,27 @@ class User < ActiveRecord::Base
                           allow_nil: true
 
   has_many :messages
+
+  has_many :listenings, class_name: "Relationship",
+                        foreign_key: "listener_id",
+                        dependent: :destroy
+  has_many :loudspeakers, through: :listenings
+
+  has_many :loudspeakings,  class_name: "Relationship",
+                            foreign_key: "loudspeaker_id",
+                            dependent: :destroy
+  has_many :listeners, through: :loudspeakings
+
+  def follow(other_user)
+    listenings.create(loudspeaker_id: other_user.id)
+  end
+
+  def unfollow(other_user)
+    listenings.find_by(loudspeaker_id: other_user.id).destroy
+  end
+
+  def following?(other_user)
+    loudspeakers.include?(other_user)
+  end
+
 end

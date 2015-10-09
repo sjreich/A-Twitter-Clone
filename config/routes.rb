@@ -5,11 +5,18 @@ Rails.application.routes.draw do
   get 'help' => 'static_pages#help'
   
   get 'signup' => 'users#new'
-  resources :users
+  resources :users do 
+    member do 
+      get :listeners
+      get :loudspeakers
+    end
+  end
 
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'login' => 'sessions#destroy'
 
   resources :messages
+
+  resources :relationships, only: [:create, :destroy]
 end

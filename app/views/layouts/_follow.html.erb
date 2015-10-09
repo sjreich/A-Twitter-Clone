@@ -1,0 +1,4 @@
+<%= form_for(current_user.listenings.build) do |f| %>
+  <%= hidden_field_tag :loudspeaker_id, @user.id %>
+  <%= f.submit "Follow", class: "btn" %>
+<% end %>

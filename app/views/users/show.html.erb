@@ -4,27 +4,14 @@
 <h3><%= @user.email %></h3>
 <p>
   <%= link_to "Edit Profile", edit_user_path(@user) %>
-  <% if current_user.try(:admin?) %>
-    |
+  <% if current_user.try(:admin?) %> |
     <%= link_to "Delete", @user, method: :delete, 
                                       data: {confirm: "Are you sure?"} %>
   <% end %>
 </p>
 
 <% @messages = Message.where("user_id = '#{@user.id}'") %>
-<% @messages.each do |message| %>
-  <div class="index-box">
-    <p><%= link_to "#{message.content}", message %></p>
-    <small><%= message.updated_at %></small>
-    <br>
-    <p>
-      <%= link_to "Edit", edit_message_path(message) %>
-      |
-      <%= link_to "Delete", message, method: :delete,
-                                          data: {confirm: "Are you sure?"} %>
-    </p> 
-  </div>
-<% end %>
+<%= render 'layouts/messageList' %>
 
 <% if current_user == @user %>
   <h4><%= link_to "Post a new message", new_message_path %></h4>
